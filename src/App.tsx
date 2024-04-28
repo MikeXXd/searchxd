@@ -13,6 +13,7 @@ const App = () => {
   const [results, setResults] = useState<Result[]>([]);
   const [saveFormat, setSaveFormat] = useState<SavingFormat>("json");
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isResultLoading, setIsResultLoading] = useState(false);
 
   useEffect(() => {
 if (saveFormat === "another") {
@@ -22,7 +23,6 @@ if (saveFormat === "another") {
 
   const saveResults = (format: SavingFormat) => {
     if (format === "another") {
-      console.log(`Unsupported format: ${format}`);
       return;
     }
     exportFromJSON({ data: results, fileName: query, exportType: format });

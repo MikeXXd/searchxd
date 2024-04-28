@@ -11,13 +11,11 @@ export default function ResultsList({ results }: ResultsListProps) {
       {results.map((result, index) => (
         <div className="result" key={index}>
           <div className="result-top">
-            {result.pagemap.cse_thumbnail &&
-              result.pagemap.cse_thumbnail[0] ? (
-                <img src={result.pagemap.cse_thumbnail[0].src} alt="" />
-              ) : (
-                <img src={web_icon} alt="" />
-              )
-            }
+            {result.pagemap && result.pagemap.cse_thumbnail && result.pagemap.cse_thumbnail[0] ? (
+              <img src={result.pagemap.cse_thumbnail[0].src} alt="" />
+            ) : (
+              <img src={web_icon} alt="" />
+            )}
             <a href={result.link} className="result-top-left">
               {" "}
               <h2>{result.title}</h2>
