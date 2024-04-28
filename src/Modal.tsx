@@ -68,9 +68,9 @@ const Modal = ({ isOpen, onClose }: ModalProps) => {
         <div className="modal-content">
           <h2>Požadavek na jiný formát</h2>
           <p>
-            V případě že Vám nevyhovuje žádný s nyní dostupných formátu
+            V případě, že Vám žádný s dostupných formátu
             nevyhovuje, rádi Vám potřebný formát doplníme, stačí vyplnit
-            formulář níže a odeslat, o zpracování požadavku bedete informováni
+            formulář a odeslat, o zpracování požadavku bedete informováni
             emailem. <p>Děkujeme, že používáte naši aplikaci</p>
           </p>
           <form onSubmit={onSubmit}>
