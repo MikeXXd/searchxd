@@ -41,17 +41,17 @@ body {
   box-shadow: 0 0 10px 0.5px var(--primary-color);
 }
 
-.query-field input, .query-field button{
-padding: 0.4rem 0.6rem;
-border-radius: 0.5rem;
-background-color: #1f1f1f;
-border: 1px solid var(--primary-color);
-color: var(--primary-color);
+.query-field input,
+.query-field button {
+  padding: 0.4rem 0.6rem;
+  border-radius: 0.5rem;
+  background-color: #1f1f1f;
+  border: 1px solid var(--primary-color);
+  color: var(--primary-color);
 }
 
 .query-field button {
   padding: 0.2rem 0.4rem;
-
 }
 
 /*---Results-List----------------------------------- */
@@ -63,7 +63,6 @@ color: var(--primary-color);
   width: 100%;
   max-width: 900px;
   margin-bottom: 3rem;
-
 }
 
 .result {
@@ -87,7 +86,7 @@ color: var(--primary-color);
 
 .result-top-left {
   text-decoration: none;
-  color:aliceblue;
+  color: aliceblue;
   display: flex;
   flex-direction: column;
   /* gap: 0.5rem; */
@@ -122,18 +121,20 @@ color: var(--primary-color);
   transition: all 0.3s;
 }
 
-.save-result button, .save-result select{
+.save-result button,
+.save-result select {
   padding: 0.4rem 0.6rem;
   border-radius: 0.5rem;
   background-color: #1f1f1f;
   border: 1px solid var(--primary-color);
   color: var(--primary-color);
-  }
+}
 
-  .save-result button:hover, .save-result select:hover {
-    box-shadow: 0 0 10px 0.5px var(--primary-color);
-    transform: box-shadow 0.3s;
-  }
+.save-result button:hover,
+.save-result select:hover {
+  box-shadow: 0 0 10px 0.5px var(--primary-color);
+  transform: box-shadow 0.3s;
+}
 
 /*---Modal----------------------------------- */
 
@@ -169,7 +170,7 @@ color: var(--primary-color);
 
 .modal .modal-body {
   position: relative;
-  display:flex ;
+  display: flex;
   justify-content: center;
   align-items: center;
   min-width: 95%;
@@ -221,7 +222,8 @@ color: var(--primary-color);
   gap: 0.5rem;
 }
 
-.modal-content input , .modal-content textarea {
+.modal-content input,
+.modal-content textarea {
   padding: 0.4rem 0.6rem;
   font-size: 1rem;
   border-radius: 0.5rem;
@@ -229,7 +231,8 @@ color: var(--primary-color);
   color: #1f1f1f;
 }
 
-.modal-content input:focus, .modal-content textarea:focus {
+.modal-content input:focus,
+.modal-content textarea:focus {
   box-shadow: 0 0 10px 0.5px var(--secondary-color);
   outline: none;
   border-color: var(--secondary-color);

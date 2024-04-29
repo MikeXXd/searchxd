@@ -17,14 +17,17 @@ export interface Result {
 }
 interface QueryFieldProps {
   onSearch: (query: string, results: Result[]) => void;
+  onLoadingResults: (isLoading: boolean) => void;
+  onError: (isError: boolean) => void;
 }
 
-export default function QueryField({ onSearch }: QueryFieldProps) {
+export default function QueryField({ onSearch, onLoadingResults, onError }: QueryFieldProps) {
   const queryRef = useRef<HTMLInputElement>(null);
 
   function onSubmit(event: React.FormEvent) {
     event.preventDefault();
-
+    onLoadingResults(true)
+    onError(false);
     if (!queryRef.current?.value) return;
 
     const query = queryRef.current?.value as string;
@@ -38,9 +41,13 @@ export default function QueryField({ onSearch }: QueryFieldProps) {
       .then((response) => response.json())
       .then((data) => {
         console.log(data);
+        onLoadingResults(false);
         onSearch(query, data.items);
       })
-      .catch((error) => console.log(error));
+      .catch((error) => {console.log("to je error:", error.message);
+        onError(true);
+        onLoadingResults(false);
+      });
   }
 
   return (

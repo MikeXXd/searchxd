@@ -14,12 +14,14 @@ const App = () => {
   const [saveFormat, setSaveFormat] = useState<SavingFormat>("json");
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isResultLoading, setIsResultLoading] = useState(false);
-
+  const [isError, setIsError] = useState(false);
+  
   useEffect(() => {
-if (saveFormat === "another") {
-    setIsModalOpen(true);
-    setSaveFormat("json");
-  }}, [saveFormat]);
+    if (saveFormat === "another") {
+      setIsModalOpen(true);
+      setSaveFormat("json");
+    }
+  }, [saveFormat]);
 
   const saveResults = (format: SavingFormat) => {
     if (format === "another") {
@@ -30,36 +32,46 @@ if (saveFormat === "another") {
 
   return (
     <>
-    <div className="app">
-      <h1>SEARCH app</h1>
-      <QueryField
-        onSearch={(query, results) => {
-          setQuery(query);
-          setResults(results);
+      <div className="app">
+        <h1>SEARCH app</h1>
+        <QueryField
+          onSearch={(query, results) => {
+            setQuery(query);
+            setResults(results);
+            
+          }}
+          onLoadingResults={(b) => setIsResultLoading(b)}
+          onError={(b) => setIsError(b)}
+        />
+        {isResultLoading && <h2>Hledám...</h2>}
+        {isError && <h2>Chyba, něco se pokazilo</h2>}
+        {!results || !results.length ? null : <ResultsList results={results} />}
+        {!results || !results.length ? null : (
+          <div className="save-result">
+            <button onClick={() => saveResults(saveFormat)}>
+              Save Results
+            </button>
+            <p> as </p>
+            <select
+              value={saveFormat}
+              onChange={(e) => setSaveFormat(e.target.value as SavingFormat)}
+            >
+              {SAVING_FORMATS.map((f, index) => (
+                <option key={index} value={f}>
+                  {f.toUpperCase()}
+                </option>
+              ))}
+            </select>
+          </div>
+        )}
+      </div>
+      <Modal
+        isOpen={isModalOpen}
+        onClose={() => {
+          setIsModalOpen(false);
         }}
       />
-
-      <ResultsList results={results} />
-      {results.length ? <div className="save-result">
-        <button onClick={() => saveResults(saveFormat)}>Save Results</button>
-        <p> as </p>
-        <select
-          value={saveFormat}
-          onChange={(e) => setSaveFormat(e.target.value as SavingFormat)}
-        >
-          {SAVING_FORMATS.map((f, index) => (
-            <option key={index} value={f}>{f.toUpperCase()}</option>
-          ))}
-        </select>
-      </div> : null}
-    </div>
-    <Modal
-    isOpen={isModalOpen}
-    onClose={() => {
-      setIsModalOpen(false);
-    }}
-  /></>
-    
+    </>
   );
 };
 

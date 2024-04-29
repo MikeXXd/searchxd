@@ -50,7 +50,7 @@ const Modal = ({ isOpen, onClose }: ModalProps) => {
       console.log("Error", data);
       setResult("Chyba odeslání");
       setTimeout(() => {
-        setResult("")
+        setResult("");
       }, 5000);
     }
   };
@@ -68,10 +68,10 @@ const Modal = ({ isOpen, onClose }: ModalProps) => {
         <div className="modal-content">
           <h2>Požadavek na jiný formát</h2>
           <p>
-            V případě, že Vám žádný s dostupných formátu
-            nevyhovuje, rádi Vám potřebný formát doplníme, stačí vyplnit
-            formulář a odeslat, o zpracování požadavku bedete informováni
-            emailem. <p>Děkujeme, že používáte naši aplikaci</p>
+            V případě, že Vám žádný s dostupných formátu nevyhovuje, rádi Vám
+            potřebný formát doplníme, stačí vyplnit formulář a odeslat, o
+            zpracování požadavku bedete informováni emailem.{" "}
+            <p>Děkujeme, že používáte naši aplikaci</p>
           </p>
           <form onSubmit={onSubmit}>
             <label htmlFor="name">Jméno</label>
@@ -89,8 +89,12 @@ const Modal = ({ isOpen, onClose }: ModalProps) => {
             <label htmlFor="message">Zpráva</label>
             <textarea id="message" name="message" rows={5} minLength={3} />
             <div className="modal-content-bottom">
-              <button className="button-submit" type="submit">{result ? result : "Odeslat"}</button>
-              <button className="button-cancel" onClick={onClose}>Zrušit</button>
+              <button className="button-submit" type="submit">
+                {result ? result : "Odeslat"}
+              </button>
+              <button className="button-cancel" onClick={onClose}>
+                Zrušit
+              </button>
             </div>
           </form>
         </div>
