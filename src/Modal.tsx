@@ -2,10 +2,10 @@ import { FormEvent, useLayoutEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import { useHotkeys } from "react-hotkeys-hook";
 
-export type ModalProps = {
+interface ModalProps {
   isOpen: boolean;
   onClose: () => void;
-};
+}
 
 export default function Modal({ isOpen, onClose }: ModalProps) {
   const [isClosing, setIsClosing] = useState(false);
@@ -103,5 +103,4 @@ export default function Modal({ isOpen, onClose }: ModalProps) {
     </div>,
     document.querySelector("#portal") as HTMLElement
   );
-};
-
+}

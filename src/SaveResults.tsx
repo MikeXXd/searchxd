@@ -3,7 +3,7 @@ import exportFromJSON from "export-from-json";
 import Modal from "./Modal";
 import { Result } from "./QueryField";
 
-const SAVING_FORMATS = ["json", "txt", "csv", "xls", "xml", "another"] as const;
+const SAVING_FORMATS = ["json", "txt", "csv", "xls", "xml", "vlastni"] as const;
 
 type SavingFormat = (typeof SAVING_FORMATS)[number];
 
@@ -17,14 +17,14 @@ export default function SaveResults({ results, query }: SaveResultsProps) {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   useEffect(() => {
-    if (saveFormat === "another") {
+    if (saveFormat === "vlastni") {
       setIsModalOpen(true);
       setSaveFormat("json");
     }
   }, [saveFormat]);
 
   const saveResults = (format: SavingFormat) => {
-    if (format === "another") {
+    if (format === "vlastni") {
       return;
     }
     exportFromJSON({ data: results, fileName: query, exportType: format });

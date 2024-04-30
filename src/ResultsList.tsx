@@ -14,9 +14,9 @@ export default function ResultsList({ results }: ResultsListProps) {
             {result.pagemap &&
             result.pagemap.cse_thumbnail &&
             result.pagemap.cse_thumbnail[0] ? (
-              <img src={result.pagemap.cse_thumbnail[0].src} alt="" />
+              <img src={result.pagemap.cse_thumbnail[0].src} alt={result.title} />
             ) : (
-              <img src={web_icon} alt="" />
+              <img src={web_icon} alt="www icon" />
             )}
             <a href={result.link} className="result-top-left">
               {" "}

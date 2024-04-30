@@ -1,8 +1,8 @@
-import { useRef } from "react";
+import { FormEvent, useRef } from "react";
 
-const apiKey = import.meta.env.VITE_API_KEY;
-const url = import.meta.env.VITE_API_URL;
-const apiID = import.meta.env.VITE_API_NAME;
+const apiKey: string = import.meta.env.VITE_API_KEY;
+const url: string = import.meta.env.VITE_API_URL;
+const apiID: string = import.meta.env.VITE_API_NAME;
 
 export interface Result {
   displayLink: string;
@@ -24,11 +24,13 @@ interface QueryFieldProps {
 export default function QueryField({ onSearch, onLoadingResults, onError }: QueryFieldProps) {
   const queryRef = useRef<HTMLInputElement>(null);
 
-  function onSubmit(event: React.FormEvent) {
+  function onSubmit(event: FormEvent) {
     event.preventDefault();
+
+    if (!queryRef.current?.value) return;
+
     onLoadingResults(true)
     onError(false);
-    if (!queryRef.current?.value) return;
 
     const query = queryRef.current?.value as string;
     const params = {
@@ -40,7 +42,6 @@ export default function QueryField({ onSearch, onLoadingResults, onError }: Quer
     fetch(url + "?" + new URLSearchParams(params))
       .then((response) => response.json())
       .then((data) => {
-        console.log(data);
         onLoadingResults(false);
         onSearch(query, data.items);
       })
