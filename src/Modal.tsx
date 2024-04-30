@@ -7,7 +7,7 @@ export type ModalProps = {
   onClose: () => void;
 };
 
-const Modal = ({ isOpen, onClose }: ModalProps) => {
+export default function Modal({ isOpen, onClose }: ModalProps) {
   const [isClosing, setIsClosing] = useState(false);
   const [result, setResult] = useState("");
   const prevIsOpen = useRef<boolean>();
@@ -105,4 +105,3 @@ const Modal = ({ isOpen, onClose }: ModalProps) => {
   );
 };
 
-export default Modal;

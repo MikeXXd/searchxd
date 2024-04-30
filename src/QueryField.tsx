@@ -44,7 +44,7 @@ export default function QueryField({ onSearch, onLoadingResults, onError }: Quer
         onLoadingResults(false);
         onSearch(query, data.items);
       })
-      .catch((error) => {console.log("to je error:", error.message);
+      .catch((error) => {console.log("error:", error.message);
         onError(true);
         onLoadingResults(false);
       });
